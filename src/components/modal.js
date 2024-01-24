@@ -1,10 +1,6 @@
 export function openModal(element) {
-    const firstInputElement = element.querySelector('input');
-    const closeButtonElement = element.querySelector('.popup__close');
-
     element.classList.add('popup_is-opened');
     element.tabIndex = element.tabIndex === -1 ? 0 : element.tabIndex;
-    (firstInputElement || closeButtonElement || element).focus();
 
     element.addEventListener('keydown', keydownHandler);
     element.addEventListener('click', clickHandler);
