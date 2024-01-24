@@ -5,7 +5,6 @@ import {
 } from './components/card';
 import { initialCards } from './components/cards';
 import { closeModal, openModal } from './components/modal';
-
 import './pages/index.css';
 
 const cardsContainer  = document.querySelector('.places__list');
