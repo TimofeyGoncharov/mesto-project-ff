@@ -181,6 +181,7 @@ function handleNewPlaceFormSubmit(event) {
             name: newPlacePlaceNameInputElement.value,
             link: newPlaceLinkInputElement.value,
         });
+        
     const next = (card) => {
         const cardElement = createCardElement(
             card,
