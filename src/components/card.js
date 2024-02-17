@@ -29,17 +29,21 @@ export function createCardElement(item, currentProfileId, remove, like, show) {
     return cardElement;
 }
 
-export function renderCardElement(cardElement, { link, name, likes }, currentProfileId) {
+export function renderCardElement(cardElement, card, currentProfileId) {
+    renderLike(cardElement, card, currentProfileId);
+    cardElement.querySelector('.card__image').src = card.link;
+    cardElement.querySelector('.card__image').alt = card.name;
+    cardElement.querySelector('.card__title').textContent = card.name;
+}
+
+export function renderLike(cardElement, card, currentProfileId) {
     const isLikedClassName = 'card__like-button_is-active';
-    const hasOwnedLike = likes.some((like) => like._id === currentProfileId);
+    const hasOwnedLike = card.likes.some((like) => like._id === currentProfileId);
 
     cardElement.setAttribute('data-is_liked', JSON.stringify(hasOwnedLike));
-    cardElement.querySelector('.card__image').src = link;
-    cardElement.querySelector('.card__image').alt = name;
-    cardElement.querySelector('.card__title').textContent = name;
     cardElement.querySelector('.card__like-button').classList.toggle(isLikedClassName, hasOwnedLike);
-    cardElement.querySelector('.card__like-button').setAttribute('aria-label', `Поставить like для: ${name}`);
-    cardElement.querySelector('.card__likes-count').textContent = likes.length;
+    cardElement.querySelector('.card__like-button').setAttribute('aria-label', `Поставить like для: ${card.name}`);
+    cardElement.querySelector('.card__likes-count').textContent = card.likes.length;
 }
 
 export function getCardId(cardElement) {
