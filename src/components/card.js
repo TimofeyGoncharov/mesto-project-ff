@@ -18,7 +18,7 @@ export function createCardElement(item, currentProfileId, remove, like, show) {
     } else {
         deleteButtonElement.remove();
     }
-    toggleLikeElement.addEventListener('click', () => {
+    toggleLikeElement.addEventListener('click', () => {//ув. ревьюер - это слушатель события для постановки лайка и отрисовывания его
         like(cardElement, currentProfileId);
     });
     cardElement.querySelector('.card__image').addEventListener('click', () => show(item));
@@ -30,7 +30,7 @@ export function renderLike(cardElement, card, currentProfileId) {
     const isLikedClassName = 'card__like-button_is-active';
     const hasOwnedLike = card.likes.some((like) => like._id === currentProfileId);
 
-    cardElement.setAttribute('data-is_liked', JSON.stringify(hasOwnedLike));
+    cardElement.setAttribute('data-is_liked', JSON.stringify(hasOwnedLike));//а этот data-атрибут выставляет и вставляет булевую переменную для карточки
     cardElement.querySelector('.card__like-button').classList.toggle(isLikedClassName, hasOwnedLike);
     cardElement.querySelector('.card__likes-count').textContent = card.likes.length;
 }
