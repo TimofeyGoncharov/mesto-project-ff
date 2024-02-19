@@ -1,7 +1,7 @@
 export function createCardElement(item, currentProfileId, remove, like, show) {
     const cardTemplate = document.querySelector('#card-template').content;
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-    const deleteButtonElement = cardElement.querySelector('.card__delete-button');
+    const buttonDeleteElement = cardElement.querySelector('.card__delete-button');
     const toggleLikeElement = cardElement.querySelector('.card__like-button');
     const cardImage = cardElement.querySelector('.card__image');
     const cardTitle = cardElement.querySelector('.card__title');
@@ -13,10 +13,10 @@ export function createCardElement(item, currentProfileId, remove, like, show) {
     renderLike(cardElement, item, currentProfileId);
 
     if (currentProfileId === item.owner._id) {
-        deleteButtonElement.addEventListener('click', () => remove(cardElement));
-        deleteButtonElement.setAttribute('aria-label', `Удалить карточку "${item.name}"`);
+        buttonDeleteElement.addEventListener('click', () => remove(cardElement));
+        buttonDeleteElement.setAttribute('aria-label', `Удалить карточку "${item.name}"`);
     } else {
-        deleteButtonElement.remove();
+        buttonDeleteElement.remove();
     }
     toggleLikeElement.addEventListener('click', () => {//ув. ревьюер - это слушатель события для постановки лайка и отрисовывания его
         like(cardElement, currentProfileId);

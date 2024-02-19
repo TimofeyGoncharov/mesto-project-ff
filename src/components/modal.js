@@ -20,8 +20,8 @@ function removeClass(element, className) {
 
 function keydownHandler(event) {
     if (event.key === 'Escape') {
-        const openedPopup = document.querySelector(`.${classPopupOpen}`);
-        closeModal(openedPopup);
+        const popupOpen = document.querySelector(`.${classPopupOpen}`);
+        closeModal(popupOpen);
     }
 }
 
@@ -29,7 +29,7 @@ function clickHandler(event) {
     if (event.target.classList.contains('popup__content')) {
         event.stopPropagation();
     } else if (event.target.classList.contains('popup_is-opened') || event.target.classList.contains('popup__close')) {
-        const openedPopup = document.querySelector(`.${classPopupOpen}`);
-        closeModal(openedPopup);
+        const popupOpen = document.querySelector(`.${classPopupOpen}`);
+        closeModal(popupOpen);
     }
 }
